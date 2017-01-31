@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PluginConfig>
+	<Field id="privatekey" type="textfield" default="">
+		<Label>Private or Alias Key:</Label>
+	</Field>
+	<SupportURL>https://github.com/IndigoDomotics/indigo-pushsafer/issues</SupportURL>
+</PluginConfig>

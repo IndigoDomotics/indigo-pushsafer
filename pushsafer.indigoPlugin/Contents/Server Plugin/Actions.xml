@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<Actions>
+	<Action id="send" uiPath="NotificationActions">
+		<Name>Send Pushsafer Notification</Name>
+		<CallbackMethod>send</CallbackMethod>
+		<ConfigUI>
+			<Field id="msgTitle" type="textfield" default="">
+				<Label>Title:</Label>
+			</Field>
+			<Field id="hlpMsgTitle" type="label" fontSize="mini" alignWithControl="true">
+				<Label>this is your message's title. if left blank, your app's name is used. note: it can contain variables.</Label>
+			</Field>
+			<Field id="msgBody" type="textfield" default="">
+				<Label>Message:</Label>
+			</Field>
+			<Field id="hlpMsgBody" type="label" fontSize="mini" alignWithControl="true">
+				<Label>this is the body of your message. note: it can contain variables.</Label>
+			</Field>
+			<Field id="separator0" type="separator"/>
+			<Field id="msgDevice" type="textfield" default="">
+				<Label>Device:</Label>
+			</Field>
+			<Field id="hlpMsgDevice" type="label" fontSize="mini" alignWithControl="true">
+				<Label>optional. enter device or device group id, only specified devices will receive the message. If empty, all your devices will receive message.</Label>
+			</Field>
+			<Field id="msgIcon" type="textfield" default="1">
+				<Label>Icon:</Label>
+			</Field>
+			<Field id="hlpMsgIcon" type="label" fontSize="mini" alignWithControl="true">
+				<Label>optional. what icon should displayed (Integer number 1-98).</Label>
+			</Field>			
+			<Field id="msgSound" type="textfield" default="">
+				<Label>Sound:</Label>
+			</Field>
+			<Field id="hlpMsgSound" type="label" fontSize="mini" alignWithControl="true">
+				<Label>optional. what sound should play (empty=device standard, 0=silent, valid sound numbers 1 - 28).</Label>
+			</Field>
+			<Field id="msgVibration" type="textfield" default="">
+				<Label>Vibration:</Label>
+			</Field>
+			<Field id="hlpMsgVibration" type="label" fontSize="mini" alignWithControl="true">
+				<Label>optional. how often the device should vibrate (valid numbers 0 - 3).</Label>
+			</Field>
+			<Field id="msgTime2Live" type="textfield" default="">
+				<Label>Time to Live:</Label>
+			</Field>
+			<Field id="hlpMsgTime2Live" type="label" fontSize="mini" alignWithControl="true">
+				<Label>optional. Integer number 0-43200: Time in minutes, after message automatically gets purged, 0 or empty: do not purged</Label>
+			</Field>			
+			<Field id="msgSupLinkUrl" type="textfield" default="">
+				<Label>Supplemental Link URL or URL scheme:</Label>
+			</Field>
+			<Field id="hlpMsgSupLinkUrl" type="label" fontSize="mini" alignWithControl="true">
+				<Label>optional. a supplementary URL or URL scheme to show with your message.</Label>
+			</Field>
+			<Field id="msgSupLinkTitle" type="textfield" default="">
+				<Label>Supplemental Link Title:</Label>
+			</Field>
+			<Field id="hlpMsgSupLinkTitle" type="label" fontSize="mini" alignWithControl="true">
+				<Label>optional. a title for your supplementary URL, otherwise just the URL is shown.</Label>
+			</Field>
+			<SupportURL>https://github.com/IndigoDomotics/indigo-pushsafer/issues</SupportURL>
+		</ConfigUI>
+	</Action>
+</Actions>
