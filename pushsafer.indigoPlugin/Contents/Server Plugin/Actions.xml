@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Actions>
-	<Action id="send" uiPath="NotificationActions">
+	<Action id="send" uiPath="NotificationActions" deviceFilter="self.saferAccount">
 		<Name>Send Pushsafer Notification</Name>
-		<CallbackMethod>send</CallbackMethod>
+		<CallbackMethod>sendPushsaver</CallbackMethod>
 		<ConfigUI>
 			<Field id="subsNote" type="label" fontSize="small">
 				<Label>Variable and Device State Substitution is enabled for all fields. Use the format %%v:12345%% for variables and %%d:12345:someStateId%% for device states.</Label>

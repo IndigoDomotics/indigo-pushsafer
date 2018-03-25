@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Devices>
+	<Device type="custom" id="saferAccount">
+		<Name>Pushsafer account</Name>
+		<ConfigUI>
+        	<SupportURL>https://github.com/IndigoDomotics/indigo-pushsafer/issues</SupportURL>
+	        <Field id="privatekey" type="textfield" default="">
+		        <Label>Private or Alias Key:</Label>
+	        </Field>
+            <Field id="hlpPrivatekey" type="label" fontSize="mini" alignWithControl="true">
+                <Label>Required, can be created at https://pushsafer.com</Label>
+            </Field>
+		</ConfigUI>
+		<States>
+			<State id="status">
+				<ValueType>String</ValueType>
+				<TriggerLabel>Status</TriggerLabel>
+				<ControlPageLabel>Status</ControlPageLabel>
+			</State>
+			<State id="message">
+				<ValueType>String</ValueType>
+				<TriggerLabel>Status Message</TriggerLabel>
+				<ControlPageLabel>Status Message</ControlPageLabel>
+			</State>
+			<State id="available">
+				<ValueType>String</ValueType>
+				<TriggerLabel>Available</TriggerLabel>
+				<ControlPageLabel>Available</ControlPageLabel>
+			</State>
+		</States>
+    <UiDisplayStateId>status</UiDisplayStateId>
+	</Device>
+</Devices>
