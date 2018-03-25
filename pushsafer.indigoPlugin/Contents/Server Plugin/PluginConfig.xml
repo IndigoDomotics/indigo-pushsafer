@@ -3,5 +3,8 @@
 	<Field id="privatekey" type="textfield" default="">
 		<Label>Private or Alias Key:</Label>
 	</Field>
+	<Field id="hlpPrivatekey" type="label" fontSize="mini" alignWithControl="true">
+		<Label>Required, can be created at https://pushsafer.com</Label>
+	</Field>
 	<SupportURL>https://github.com/IndigoDomotics/indigo-pushsafer/issues</SupportURL>
 </PluginConfig>

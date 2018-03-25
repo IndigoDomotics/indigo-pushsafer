@@ -1,77 +1,92 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import httplib, urllib, sys, os
+import os, httplib, urllib
+import requests
 
 class Plugin(indigo.PluginBase):
 
-	def __init__(self, pluginId, pluginDisplayName, pluginVersion, pluginPrefs):
-		indigo.PluginBase.__init__(self, pluginId, pluginDisplayName, pluginVersion, pluginPrefs)
-		self.debug = True
+    def __init__(self, pluginId, pluginDisplayName, pluginVersion, pluginPrefs):
+        indigo.PluginBase.__init__(self, pluginId, pluginDisplayName, pluginVersion, pluginPrefs)
+        self.debug = True
 
-	def __del__(self):
-		indigo.PluginBase.__del__(self)
+    def __del__(self):
+        indigo.PluginBase.__del__(self)
 
-	def startup(self):
-		self.debugLog(u"startup called")
+    def startup(self):
+        self.debugLog(u"startup called")
 
-	def shutdown(self):
-		self.debugLog(u"shutdown called")
+    def shutdown(self):
+        self.debugLog(u"shutdown called")
 
-	# helper functions
-	def prepareTextValue(self, strInput):
+    # helper functions
+    def present(self, prop):
+        return (prop and prop.strip() != "")
 
-		if strInput is None:
-			return strInput
-		else:
-			strInput = strInput.strip()
+    def prepareTextValue(self, strInput):
 
-			strInput = self.substitute(strInput)
+        if strInput is None:
+            return strInput
+        else:
+            strInput = strInput.strip()
 
-			self.debugLog(strInput)
+            strInput = self.substitute(strInput)
 
-			#fix issue with special characters
-			strInput = strInput.encode('utf8')
+            self.debugLog(strInput)
 
-			return strInput
+            #fix issue with special characters
+            strInput = strInput.encode('utf8')
 
-	# actions go here
-	def send(self, pluginAction):
+            return strInput
 
-		#fill params dictionary with required values
-		params = {
-			'k': self.pluginPrefs['privatekey'].strip(),
-			't': self.prepareTextValue(pluginAction.props['msgTitle']),
-			'm': self.prepareTextValue(pluginAction.props['msgBody'])
-		}
+    # actions go here
+    def send(self, pluginAction):
 
-		#populate optional parameters
-		if pluginAction.props['msgDevice'] is not None:
-			params['d'] = pluginAction.props['msgDevice'].strip()
+        #fill params dictionary with required values
+        params = {
+            'k': self.pluginPrefs['privatekey'].strip(),
+            'm': self.prepareTextValue(pluginAction.props['msgBody'])
+        }
 
-		if pluginAction.props['msgSound'] is not None:
-			params['s'] = pluginAction.props["msgSound"].strip()
-			
-		if pluginAction.props['msgVibration'] is not None:
-			params['v'] = pluginAction.props["msgVibration"].strip()
-			
-		if pluginAction.props['msgIcon'] is not None:
-			params['i'] = pluginAction.props["msgIcon"].strip()			
-			
-		if pluginAction.props['msgTime2Live'] is not None:
-			params['l'] = pluginAction.props["msgTime2Live"].strip()			
+        #populate optional parameters
+        
+        if self.present(pluginAction.props.get('msgTitle')):
+            params['t'] = self.prepareTextValue(pluginAction.props['msgTitle'])
 
-		if pluginAction.props['msgSupLinkTitle'] is not None:
-			params['ut'] = self.prepareTextValue(pluginAction.props['msgSupLinkTitle'])
+        if self.present(pluginAction.props.get('msgDevice')):
+            params['d'] = pluginAction.props['msgDevice'].strip()
 
-		if pluginAction.props['msgSupLinkUrl'] is not None:
-			params['u'] = self.prepareTextValue(pluginAction.props['msgSupLinkUrl'])
+        if self.present(pluginAction.props.get('msgSound')):
+            params['s'] = pluginAction.props["msgSound"].strip()
+            
+        if self.present(pluginAction.props.get('msgVibration')):
+            params['v'] = pluginAction.props["msgVibration"].strip()
+            
+        if self.present(pluginAction.props.get('msgIcon')):
+            params['i'] = pluginAction.props["msgIcon"].strip()         
+            
+        if self.present(pluginAction.props.get('msgTime2Live')):
+            params['l'] = pluginAction.props["msgTime2Live"].strip()            
 
-		conn = httplib.HTTPSConnection("pushsafer.com:443")
-		conn.request(
-			"POST",
-			"/api",
-			urllib.urlencode(params),
-			{"Content-type": "application/x-www-form-urlencoded"}
-		)
-		conn.close()
+        if self.present(pluginAction.props.get('msgSupLinkTitle')):
+            params['ut'] = self.prepareTextValue(pluginAction.props['msgSupLinkTitle'])
+
+        if self.present(pluginAction.props.get('msgSupLinkUrl')):
+            params['u'] = self.prepareTextValue(pluginAction.props['msgSupLinkUrl'])
+
+        self.debugLog(u"Params: {}".format(params))
+
+#        conn = httplib.HTTPSConnection("pushsafer.com:443")
+#        conn.request(
+#           "POST",
+#           "/api",
+#           "/data/push-send.php",
+#           urllib.urlencode(params),
+#           {"Content-type": "application/x-www-form-urlencoded"}
+#        )
+#        r = conn.getresponse().read()
+#        conn.close()
+#        self.debugLog(u"Result: {}".format(r))
+       
+        r = requests.post("https://pushsafer.com/api", data = params)
+        self.debugLog(u"Result: {}: {}".format(r.status_code, r.text))
