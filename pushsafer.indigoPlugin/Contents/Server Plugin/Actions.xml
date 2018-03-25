@@ -4,7 +4,7 @@
 		<Name>Send Pushsafer Notification</Name>
 		<CallbackMethod>send</CallbackMethod>
 		<ConfigUI>
-			<Field id="subsNote" type="label" fontSize="small" fontColor="darkgray">
+			<Field id="subsNote" type="label" fontSize="small">
 				<Label>Variable and Device State Substitution is enabled for all fields. Use the format %%v:12345%% for variables and %%d:12345:someStateId%% for device states.</Label>
 			</Field>
 			<Field id="msgBody" type="textfield" default="">
@@ -51,22 +51,22 @@
 				<Label>Optional. Integer number 0-43200: Time in minutes, after message automatically gets purged, 0 or empty: do not purged</Label>
 			</Field>			
 			<Field id="msgSupLinkUrl" type="textfield" default="">
-				<Label>Supplemental Link URL or URL scheme:</Label>
+				<Label>Link:</Label>
 			</Field>
 			<Field id="hlpMsgSupLinkUrl" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. a supplementary URL or URL scheme to show with your message.</Label>
+				<Label>Optional. A supplementary URL or URL scheme to show with your message.</Label>
 			</Field>
 			<Field id="msgSupLinkTitle" type="textfield" default="">
-				<Label>Supplemental Link Title:</Label>
+				<Label>Link Title:</Label>
 			</Field>
 			<Field id="hlpMsgSupLinkTitle" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. a title for your supplementary URL, otherwise just the URL is shown.</Label>
+				<Label>Optional. A title for your supplementary URL, otherwise just the URL is shown.</Label>
 			</Field>
 			<Field id="msgAttachment" type="textfield" default="">
 				<Label>Attachments:</Label>
 			</Field>
 			<Field id="hlpAttachment" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. Full path to an attachment file. Multiple files (max 3) allowed, separate with commas. Max size for all attachments is 8MB.</Label>
+				<Label>Optional. Full path to attachment file(s). Multiple files (max 3) allowed, separate with commas. Max size for all attachments is 8MB.</Label>
 			</Field>
 			<SupportURL>https://github.com/IndigoDomotics/indigo-pushsafer/issues</SupportURL>
 		</ConfigUI>
