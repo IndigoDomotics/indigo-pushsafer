@@ -47,9 +47,18 @@
 			<Field id="msgTime2Live" type="textfield" default="">
 				<Label>Time to Live:</Label>
 			</Field>
-			<Field id="hlpMsgTime2Live" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. Integer number 0-43200: Time in minutes, after message automatically gets purged, 0 or empty: do not purged</Label>
-			</Field>			
+			<Field id="hlpMsgPriority" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. -2 = lowest priority, -1 = lower priority, 0 = normal priority, 1 = high priority, 2 = highest priority</Label>
+			</Field>
+			<Field id="hlpMsgRetry" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. Integer 60-10800 (60s steps): Time in seconds, after a message should resend.</Label>
+			</Field>
+			<Field id="hlpMsgExpire" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. Integer 60-10800: Time in seconds, after the retry/resend should stop.</Label>
+			</Field>
+			<Field id="hlpMsgAnswer" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. 1 = Answer is possible, 0 = Answer is not possible.</Label>
+			</Field>
 			<Field id="msgSupLinkUrl" type="textfield" default="">
 				<Label>Link:</Label>
 			</Field>
