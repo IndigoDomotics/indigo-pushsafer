@@ -15,7 +15,7 @@ indigo-pushsafer
 
 ### Actions Supported
 * Send Push Notification
-	* customize title, message, icon, sound, vibration, device, time to live
+	* customize title, message, icon, sound, vibration, device, time to live, priority, retry, expire, answer
 	* sent to all, single or grouped devices
 	* configure URL with URL title or use URL schemes to open other apps from Pushsafer
 

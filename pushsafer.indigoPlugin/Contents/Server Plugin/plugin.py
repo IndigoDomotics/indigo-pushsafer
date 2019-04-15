@@ -101,8 +101,20 @@ class Plugin(indigo.PluginBase):
             params['ut'] = self.prepareTextValue(pluginAction.props['msgSupLinkTitle'])
 
         if self.present(pluginAction.props.get('msgTime2Live')):
-            params['l'] = pluginAction.props["msgTime2Live"].strip()            
+            params['l'] = pluginAction.props["msgTime2Live"].strip()
 
+        if self.present(pluginAction.props.get('msgPriority')):
+            params['pr'] = pluginAction.props["msgPriority"].strip()
+            
+        if self.present(pluginAction.props.get('msgRetry')):
+            params['re'] = pluginAction.props["msgRetry"].strip()
+            
+        if self.present(pluginAction.props.get('msgExpire')):
+            params['ex'] = pluginAction.props["msgExpire"].strip()
+            
+        if self.present(pluginAction.props.get('msgAnswer')):
+            params['a'] = pluginAction.props["msgAnswer"].strip()
+            
         if self.present(pluginAction.props.get('msgAttachment')):
             count = 0
             fileParameters = ["p", "p2", "p3"]
