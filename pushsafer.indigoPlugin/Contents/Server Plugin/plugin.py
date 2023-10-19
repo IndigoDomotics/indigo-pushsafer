@@ -80,12 +80,6 @@ class Plugin(indigo.PluginBase):
         if self.present(pluginAction.props.get('msgIcon')):
             params['i'] = pluginAction.props["msgIcon"].strip()
 
-        if self.present(pluginAction.props.get('msgSupLinkUrl')):
-            params['u'] = self.prepareTextValue(pluginAction.props['msgSupLinkUrl'])
-
-        if self.present(pluginAction.props.get('msgSupLinkTitle')):
-            params['ut'] = self.prepareTextValue(pluginAction.props['msgSupLinkTitle'])
-
         if self.present(pluginAction.props.get('msgTime2Live')):
             params['l'] = pluginAction.props["msgTime2Live"].strip()
 
@@ -98,8 +92,24 @@ class Plugin(indigo.PluginBase):
         if self.present(pluginAction.props.get('msgExpire')):
             params['ex'] = pluginAction.props["msgExpire"].strip()
 
+        if self.present(pluginAction.props.get('msgConfirm')):
+            params['cr'] = pluginAction.props["msgConfirmInterval"].strip()
+
         if self.present(pluginAction.props.get('msgAnswer')):
             params['a'] = pluginAction.props["msgAnswer"].strip()
+
+        if self.present(pluginAction.props.get('msgAnswerOptions')):
+            params['ao'] = pluginAction.props["msgAnswerOptions"]
+            params['a'] = "1"
+
+        if self.present(pluginAction.props.get('msgAnswerForce')):
+            params['af'] = pluginAction.props["msgAnswerForce"].strip()
+
+        if self.present(pluginAction.props.get('msgSupLinkUrl')):
+            params['u'] = self.prepareTextValue(pluginAction.props['msgSupLinkUrl'])
+
+        if self.present(pluginAction.props.get('msgSupLinkTitle')):
+            params['ut'] = self.prepareTextValue(pluginAction.props['msgSupLinkTitle'])
 
         if self.present(pluginAction.props.get('msgAttachment')):
             count = 0
@@ -144,6 +154,7 @@ class Plugin(indigo.PluginBase):
 
                 count = count + 1
 
+        self.logger.debug(f"POST params: {params}")
         r = requests.post("https://www.pushsafer.com/api", data=params)
         self.logger.debug(f"POST Result: {r.text}")
         result = json.loads(r.text)

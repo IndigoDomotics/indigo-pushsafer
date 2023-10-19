@@ -19,59 +19,138 @@
 			<Field id="hlpMsgTitle" type="label" fontSize="mini" alignWithControl="true">
 				<Label>Optional. This is your message's title.</Label>
 			</Field>
+
 			<Field id="separator0" type="separator"/>
+
 			<Field id="msgDevice" type="textfield" default="">
 				<Label>Device:</Label>
 			</Field>
 			<Field id="hlpMsgDevice" type="label" fontSize="mini" alignWithControl="true">
 				<Label>Optional. Device or device group id, only specified devices will receive the message. If empty, all your devices will receive message.</Label>
 			</Field>
+
 			<Field id="msgIcon" type="textfield" default="1">
 				<Label>Icon:</Label>
 			</Field>
 			<Field id="hlpMsgIcon" type="label" fontSize="mini" alignWithControl="true">
 				<Label>Optional. What icon should displayed (Integer number 1-98).</Label>
-			</Field>			
+			</Field>
+
 			<Field id="msgSound" type="textfield" default="">
 				<Label>Sound:</Label>
 			</Field>
 			<Field id="hlpMsgSound" type="label" fontSize="mini" alignWithControl="true">
 				<Label>Optional. What sound should play (empty=device standard, 0=silent, valid sound numbers 1 - 28).</Label>
 			</Field>
-			<Field id="msgVibration" type="textfield" default="">
+
+			<Field id="msgVibration" type="menu" defaultValue="">
 				<Label>Vibration:</Label>
+        		<List>
+        			<Option value="">None</Option>
+        			<Option value="1">Once</Option>
+        			<Option value="2">Twice</Option>
+        			<Option value="3">Thrice</Option>
+        		</List>
 			</Field>
 			<Field id="hlpMsgVibration" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. How often the device should vibrate (valid numbers 0 - 3).</Label>
+				<Label>Optional. How often the device should vibrate.</Label>
 			</Field>
-			<Field id="msgTime2Live" type="textfield" default="">
-				<Label>Time to Live:</Label>
+
+			<Field id="msgConfirm" type="menu" defaultValue="">
+				<Label>Confirm Message:</Label>
+        		<List>
+        			<Option value="">No</Option>
+        			<Option value="1">Yes</Option>
+        		</List>
 			</Field>
-			<Field id="hlpMsgPriority" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. -2 = lowest priority, -1 = lower priority, 0 = normal priority, 1 = high priority, 2 = highest priority</Label>
+			<Field id="msgConfirmInterval" type="textfield" defaultValue="60">
+				<Label>Resend Interval:</Label>
 			</Field>
-			<Field id="hlpMsgRetry" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. Integer 60-10800 (60s steps): Time in seconds, after a message should resend.</Label>
+			<Field id="hlpMsgConfirm" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. If yes, resend message (at specified interval) until confirmed in app or website.</Label>
 			</Field>
-			<Field id="hlpMsgExpire" type="label" fontSize="mini" alignWithControl="true">
-				<Label>Optional. Integer 60-10800: Time in seconds, after the retry/resend should stop.</Label>
+
+			<Field id="msgAnswer" type="menu" defaultValue="0">
+				<Label>Answer:</Label>
+        		<List>
+        			<Option value="0">No Answer</Option>
+        			<Option value="1">Answer</Option>
+        		</List>
 			</Field>
 			<Field id="hlpMsgAnswer" type="label" fontSize="mini" alignWithControl="true">
 				<Label>Optional. 1 = Answer is possible, 0 = Answer is not possible.</Label>
 			</Field>
-			<Field id="msgSupLinkUrl" type="textfield" default="">
+
+			<Field id="msgAnswerOptions" type="textfield" defaultValue="">
+				<Label>Answer Options:</Label>
+			</Field>
+			<Field id="hlpMsgAnswerOptions" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. You can specify predefined answer options divided by a pipe character, e.g. Yes|No|Maybe. These serve as a quick selection in the Pushsafer Client APP.</Label>
+			</Field>
+
+			<Field id="msgAnswerForce" type="menu" defaultValue="">
+				<Label>Force Answer:</Label>
+        		<List>
+        			<Option value="">No</Option>
+        			<Option value="1">Yes</Option>
+        		</List>
+			</Field>
+			<Field id="hlpMsgAnswerForce" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. The user will be prompted to answer, the message will be opened directly.</Label>
+			</Field>
+
+			<Field id="msgTime2Live" type="textfield" defaultValue="">
+				<Label>Time to Live:</Label>
+			</Field>
+			<Field id="hlpMsgTime2Live" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional.  How long a message should be kept in the client APP until it is automatically deleted. 0 or empty = do not automatically delete, an integer value 1-43200 the time in minutes before automatic deletion.</Label>
+			</Field>
+
+			<Field id="msgPriority" type="menu" defaultValue="0">
+				<Label>Priority:</Label>
+        		<List>
+        			<Option value="-2">Lowest</Option>
+        			<Option value="-1">Low</Option>
+        			<Option value="0">Normal</Option>
+        			<Option value="1">High</Option>
+        			<Option value="2">Highest</Option>
+        		</List>
+			</Field>
+			<Field id="hlpMsgPriority" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. -2 = lowest priority, -1 = lower priority, 0 = normal priority, 1 = high priority, 2 = highest priority</Label>
+			</Field>
+
+			<Field id="msgRetry" type="textfield" defaultValue="">
+				<Label>Time to Live:</Label>
+			</Field>
+			<Field id="hlpMsgRetry" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. Integer 60-10800 (60s steps): Time in seconds, after a message should resend.</Label>
+			</Field>
+
+			<Field id="msgExpire" type="textfield" defaultValue="">
+				<Label>Expires in:</Label>
+			</Field>
+			<Field id="hlpMsgExpire" type="label" fontSize="mini" alignWithControl="true">
+				<Label>Optional. Integer 60-10800: Time in seconds, after the retry/resend should stop.</Label>
+			</Field>
+
+			<Field id="separator1" type="separator"/>
+
+			<Field id="msgSupLinkUrl" type="textfield" defaultValue="">
 				<Label>Link:</Label>
 			</Field>
 			<Field id="hlpMsgSupLinkUrl" type="label" fontSize="mini" alignWithControl="true">
 				<Label>Optional. A supplementary URL or URL scheme to show with your message.</Label>
 			</Field>
-			<Field id="msgSupLinkTitle" type="textfield" default="">
+
+			<Field id="msgSupLinkTitle" type="textfield" defaultValue="">
 				<Label>Link Title:</Label>
 			</Field>
 			<Field id="hlpMsgSupLinkTitle" type="label" fontSize="mini" alignWithControl="true">
 				<Label>Optional. A title for your supplementary URL, otherwise just the URL is shown.</Label>
 			</Field>
-			<Field id="msgAttachment" type="textfield" default="">
+
+			<Field id="msgAttachment" type="textfield" defaultValue="">
 				<Label>Attachments:</Label>
 			</Field>
 			<Field id="hlpAttachment" type="label" fontSize="mini" alignWithControl="true">
